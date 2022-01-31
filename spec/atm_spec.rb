@@ -70,4 +70,10 @@ describe Atm do
 
   end
 
+  context 'Account history' do
+    it 'A customer can ask for their account history' do
+      expect(subject.account_history).to eq('date || credit || debit || balance')
+    end
+  end
+
 end
