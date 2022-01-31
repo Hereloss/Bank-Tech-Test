@@ -26,7 +26,7 @@ class Atm
     end
   end
 
-  def account_history
+  def print_transaction_history
     string_account_history = ""
     @account_history.each do |transaction|
       string_account_history += transaction.to_s + " \n"
