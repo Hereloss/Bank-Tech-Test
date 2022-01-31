@@ -11,6 +11,7 @@ class Atm
 
   def deposit(amount)
     @my_balance += amount
+    return @my_balance.to_s + Date.today.to_s
   end
 
   def withdraw(amount)
@@ -19,5 +20,6 @@ class Atm
       return "Error - Not enough money!"
     end
     @my_balance -= amount
+    return @my_balance.to_s + Date.today.to_s
   end
 end

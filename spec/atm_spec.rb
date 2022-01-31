@@ -26,7 +26,7 @@ describe Atm do
     end
 
     it 'Each deposit has a timestamp on it stating the date it was made on' do
-      expect(subject.deposit(5)).to include(Date.today)
+      expect(subject.deposit(5)).to include(Date.today.to_s)
     end
   end
 
@@ -50,7 +50,8 @@ describe Atm do
     end
 
     it 'Each withdrawal has a timestamp on it stating the date it was made on' do
-      expect(subject.withdrawal(5)).to include(Date.today)
+      subject.deposit(5)
+      expect(subject.withdraw(5)).to include(Date.today.to_s)
     end
 
   end
