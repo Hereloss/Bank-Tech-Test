@@ -11,6 +11,9 @@ class Atm
 
   def deposit(amount)
     @my_balance += amount
-    return amount
+  end
+
+  def withdraw(amount)
+    @my_balance -= amount
   end
 end
