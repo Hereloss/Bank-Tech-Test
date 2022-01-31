@@ -12,7 +12,7 @@ describe Atm do
 
   it 'A customer can make a deposit to their account' do
     subject.deposit(5)
-    expect(subject.balance).to eq(0)
+    expect(subject.balance).to eq(5)
   end
 
 end
