@@ -16,7 +16,9 @@ describe Atm do
   end
 
   it 'A customer can make multiple deposits to their account' do
-
+    subject.deposit(5)
+    subject.deposit(6)
+    expect(subject.balance).to eq(11)
   end
 
 end
