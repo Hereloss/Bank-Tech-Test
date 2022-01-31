@@ -3,13 +3,20 @@
 require './atm'
 
 describe Atm do
+  before (:each) do
+    @bank_double = double()
+    @printer_double = double()
+    @atm = Atm.new(@bank_double,@printer_double)
+  end
   context 'Balance' do
     it 'A customer has a bank account balance' do
-      expect(subject.check_balance).not_to eq(nil)
+      allow(@bank_double).to receive(:my_balance).and_return(0)
+      expect(@atm.check_balance).not_to eq(nil)
     end
 
     it 'When a customer asks for their balance, it returns a number' do
-      expect(subject.check_balance).to eq(0)
+      allow(@bank_double).to receive(:my_balance).and_return(0)
+      expect(@atm.check_balance).to eq(0)
     end
   end
 
