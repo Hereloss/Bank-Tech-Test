@@ -9,43 +9,43 @@ class Atm
 
   def deposit(amount)
     if valid_amount(amount) == true
-      amount = converting_from_string_to_amount(amount)
-      @my_balance += amount
-      return @my_balance.to_s + Date.today.to_s
+      @my_balance += converting_from_string_to_amount(amount)
+      @my_balance.to_s + Date.today.to_s
     else
-      return "Not a valid amount"
+      "Not a valid amount"
     end
   end
 
   def withdraw(amount)
     if valid_amount(amount) == true
-      amount = converting_from_string_to_amount(amount)
-      if @my_balance - amount < 0
-        puts "Error - Not enough money!"
-        return "Error - Not enough money!"
-      end
-    @my_balance -= amount
-    return @my_balance.to_s + Date.today.to_s
+      valid_withdrawal(converting_from_string_to_amount(amount))
     else
-      return "Not a valid amount"
+      "Not a valid amount"
     end
   end
 
+  def valid_withdrawal(amount)
+    if @my_balance - amount < 0
+      puts "Error - Not enough money!"
+      return "Error - Not enough money!"
+    end
+    @my_balance -= amount
+    @my_balance.to_s + Date.today.to_s
+  end
+
   def valid_amount(amount)
-    if (amount[0] == "£" && amount[1..-1].to_i != 0)
-      return true
-    elsif (amount.is_a? Integer)
-      return true
+    if (amount[0] == "£" && amount[1..-1].to_i != 0) || (amount.is_a? Integer)
+      true
     else
-      return false
+      false
     end
   end
 
   def converting_from_string_to_amount(amount)
     if amount.is_a? Integer
-      return amount
+      amount
     else
-      return amount[1..-1].to_i
+      amount[1..-1].to_i
     end
   end
 end

@@ -52,8 +52,8 @@ As a customer,
 So I can see full details of my finances,  
 I would like to be able to see the history of my account
 
-As a customer,
-So I don't deposit a wrong amount or nothing,
+As a customer,  
+So I don't deposit a wrong amount or nothing,  
 I would like the deposit feature to only accept deposits in numbers or pounds
 
 ### Process

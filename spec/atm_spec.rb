@@ -62,10 +62,10 @@ describe Atm do
     end
 
     it 'A withdrawal that is not a number or currency amount is not a valid input' do
-      expect(subject.deposit("£5")).not_to eq("Not a valid amount")
-      expect(subject.deposit("£5.00")).not_to eq("Not a valid amount")
-      expect(subject.deposit("Five")).to eq("Not a valid amount")
-      expect(subject.deposit("££5")).to eq("Not a valid amount")
+      expect(subject.withdraw("£5")).not_to eq("Not a valid amount")
+      expect(subject.withdraw("£5.00")).not_to eq("Not a valid amount")
+      expect(subject.withdraw("Five")).to eq("Not a valid amount")
+      expect(subject.withdraw("££5")).to eq("Not a valid amount")
     end
 
   end
