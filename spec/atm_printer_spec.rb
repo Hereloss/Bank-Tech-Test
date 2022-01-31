@@ -13,6 +13,12 @@ describe Atm_Printer do
       subject.update_account_history("#{Date.today.strftime('%d-%m-%Y')} || 5 || || 5")
       expect(subject.print_transaction_history).to eq("date || credit || debit || balance \n10-01-2023 || 5 || || 5 \n")
     end
+
+    it 'The account history should be from the oldest to the newest' do
+      subject.update_account_history("#{Date.today.strftime('%d-%m-%Y')} || 5 || || 5")
+      subject.update_account_history("#{Date.today.strftime('%d-%m-%Y')} || || 5 || 0")
+      expect(subject.print_transaction_history).to eq("date || credit || debit || balance \n#{Date.today.strftime('%d-%m-%Y')} || || 5 || 0 \n#{Date.today.strftime('%d-%m-%Y')} || 5 || || 5 \n")
+    end
   end
 
   context 'Deposits' do
