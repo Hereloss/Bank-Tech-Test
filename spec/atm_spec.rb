@@ -75,6 +75,12 @@ describe Atm do
       expect(subject.print_transaction_history).to eq("date || credit || debit || balance \n")
     end
 
+    it 'The account history should be from the oldest to the newest' do
+      subject.deposit(5)
+      subject.withdraw(5)
+      expect(subject.print_transaction_history).to eq("date || credit || debit || balance \n#{Date.today} || || 5 || 0 \n#{Date.today} || 5 || || 5 \n")
+    end
+
     it 'After a deposit, it should show this in the account history in the correct format' do
       subject.deposit(5)
       expect(subject.print_transaction_history).to eq("date || credit || debit || balance \n#{Date.today} || 5 || || 5 \n")
@@ -84,6 +90,12 @@ describe Atm do
       subject.deposit(5)
       subject.withdraw(5)
       expect(subject.print_transaction_history).to eq("date || credit || debit || balance \n#{Date.today} || 5 || || 5 \n#{Date.today} || || 5 || 0 \n")
+    end
+
+    it 'The date should be in day-month-year order' do
+      allow(Date).to receive(:today).and_return Date.new(2023,1,10)
+      subject.deposit(5)
+      expect(subject.print_transaction_history).to eq("date || credit || debit || balance \n10-1-2023 || 5 || || 5 \n")
     end
   end
 
