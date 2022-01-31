@@ -1,3 +1,5 @@
+require 'date'
+
 class Atm
 
   attr_reader :my_balance
@@ -42,7 +44,7 @@ class Atm
   def make_deposit(amount)
     @my_balance += converting_from_string_to_amount(amount)
     @account_history << "#{Date.today.strftime("%d-%m-%Y").to_s} || #{converting_from_string_to_amount(amount)} || || #{my_balance}"
-    @my_balance.to_s + Date.today.strftime("%d-%m-%Y").to_s
+    @my_balance.to_s + "," + Date.today.strftime("%d-%m-%Y").to_s
   end
 
 
@@ -57,7 +59,7 @@ class Atm
   def make_withdrawal(amount)
     @my_balance -= amount
     @account_history << "#{Date.today.strftime("%d-%m-%Y").to_s} || || #{converting_from_string_to_amount(amount)} || #{my_balance}"
-    @my_balance.to_s + Date.today.strftime("%d-%m-%Y").to_s
+    @my_balance.to_s + "," + Date.today.strftime("%d-%m-%Y").to_s
   end
 
   def valid_amount(amount)
