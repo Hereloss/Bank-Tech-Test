@@ -9,6 +9,11 @@ class Atm
     @account_history = ['date || credit || debit || balance']
   end
 
+  def check_balance
+    puts "Your balance is: #{@my_balance}"
+    return @my_balance
+  end
+
 
   def deposit(amount)
     if valid_amount(amount) == true
