@@ -14,6 +14,10 @@ class Atm
   end
 
   def withdraw(amount)
+    if @my_balance - amount < 0
+      puts "Error - Not enough money!"
+      return "Error - Not enough money!"
+    end
     @my_balance -= amount
   end
 end

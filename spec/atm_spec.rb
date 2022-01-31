@@ -43,7 +43,6 @@ describe Atm do
     it 'A customer cannot withdraw more money than they have in their account' do
       subject.deposit(5)
       expect(subject.withdraw(10)).to eq 'Error - Not enough money!'
-      expect { "Error - Not enough money!" }.to output.to_stdout
     end
 
   end
