@@ -105,7 +105,7 @@ describe Atm do
       atm.deposit(1000)
       atm.withdraw(5)
       atm.deposit(10)
-      expect(atm.print_transaction_history).to eq("date || credit || debit || balance \n#{Date.today.strftime("%d-%m-%Y")} || 1000 || || 1000 \n#{Date.today.strftime("%d-%m-%Y")} || || 5 || 995 \n#{Date.today.strftime("%d-%m-%Y")} || 10 || || 1005 \n")
+      expect(atm.print_transaction_history).to eq("date || credit || debit || balance \n#{Date.today.strftime("%d-%m-%Y")} || 10 || || 1005 \n#{Date.today.strftime("%d-%m-%Y")} || || 5 || 995 \n#{Date.today.strftime("%d-%m-%Y")} || 1000 || || 1000 \n")
     end
 
     it "Feature test 2" do
@@ -116,7 +116,7 @@ describe Atm do
       atm.deposit(2000)
       allow(Date).to receive(:today).and_return Date.new(2023,1,14)
       atm.withdraw(500)
-      expect(atm.print_transaction_history).to eq("date || credit || debit || balance \n2023-01-10 || 1000 || || 1000 \n2023-01-13 || 2000 || || 3000 \n2023-01-14 || || 500 || 2500 \n")
+      expect(atm.print_transaction_history).to eq("date || credit || debit || balance \n14-01-2023 || || 500 || 2500 \n13-01-2023 || 2000 || || 3000 \n10-01-2023 || 1000 || || 1000 \n")
     end
 
     it "Feature test 3 with multiple invalid inputs" do
@@ -126,7 +126,7 @@ describe Atm do
       atm.withdraw("£5")
       atm.withdraw("fiver")
       atm.deposit(10)
-      expect(atm.print_transaction_history).to eq("date || credit || debit || balance \n#{Date.today.strftime("%d-%m-%Y")} || 1000 || || 1000 \n#{Date.today.strftime("%d-%m-%Y")} || || 5 || 995 \n#{Date.today.strftime("%d-%m-%Y")} || 10 || || 1005 \n")
+      expect(atm.print_transaction_history).to eq("date || credit || debit || balance \n#{Date.today.strftime("%d-%m-%Y")} || 10 || || 1005 \n#{Date.today.strftime("%d-%m-%Y")} || || 5 || 995 \n#{Date.today.strftime("%d-%m-%Y")} || 1000 || || 1000 \n")
     end
   end
 
