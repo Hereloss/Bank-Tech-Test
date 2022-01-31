@@ -25,9 +25,13 @@ class Atm
   end
 
   def print_transaction_history
-    string_account_history = ""
-    @account_history.each do |transaction|
-      string_account_history += transaction.to_s + " \n"
+    string_account_history = "#{@account_history[0]} \n"
+    if @account_history.length > 1
+      @account_history.reverse.each do |transaction|
+        unless transaction == 'date || credit || debit || balance'
+          string_account_history += transaction.to_s + " \n"
+        end
+      end
     end
     puts string_account_history
     string_account_history
@@ -37,8 +41,8 @@ class Atm
 
   def make_deposit(amount)
     @my_balance += converting_from_string_to_amount(amount)
-    @account_history << "#{Date.today.to_s} || #{converting_from_string_to_amount(amount)} || || #{my_balance}"
-    @my_balance.to_s + Date.today.to_s
+    @account_history << "#{Date.today.strftime("%d-%m-%Y").to_s} || #{converting_from_string_to_amount(amount)} || || #{my_balance}"
+    @my_balance.to_s + Date.today.strftime("%d-%m-%Y").to_s
   end
 
 
@@ -52,8 +56,8 @@ class Atm
 
   def make_withdrawal(amount)
     @my_balance -= amount
-    @account_history << "#{Date.today.to_s} || || #{converting_from_string_to_amount(amount)} || #{my_balance}"
-    @my_balance.to_s + Date.today.to_s
+    @account_history << "#{Date.today.strftime("%d-%m-%Y").to_s} || || #{converting_from_string_to_amount(amount)} || #{my_balance}"
+    @my_balance.to_s + Date.today.strftime("%d-%m-%Y").to_s
   end
 
   def valid_amount(amount)
