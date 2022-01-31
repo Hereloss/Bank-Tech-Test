@@ -10,9 +10,7 @@ class Atm
 
   def deposit(amount)
     if valid_amount(amount) == true
-      @my_balance += converting_from_string_to_amount(amount)
-      @account_history << "#{Date.today.to_s} || #{converting_from_string_to_amount(amount)} || || #{my_balance}"
-      @my_balance.to_s + Date.today.to_s
+      make_deposit(amount)
     else
       "Not a valid amount"
     end
@@ -31,10 +29,17 @@ class Atm
     @account_history.each do |transaction|
       string_account_history += transaction.to_s + " \n"
     end
-    return string_account_history
+    puts string_account_history
+    string_account_history
   end
 
   private
+
+  def make_deposit(amount)
+    @my_balance += converting_from_string_to_amount(amount)
+    @account_history << "#{Date.today.to_s} || #{converting_from_string_to_amount(amount)} || || #{my_balance}"
+    @my_balance.to_s + Date.today.to_s
+  end
 
 
   def valid_withdrawal(amount)
@@ -42,6 +47,10 @@ class Atm
       puts "Error - Not enough money!"
       return "Error - Not enough money!"
     end
+    make_withdrawal(amount)
+  end
+
+  def make_withdrawal(amount)
     @my_balance -= amount
     @account_history << "#{Date.today.to_s} || || #{converting_from_string_to_amount(amount)} || #{my_balance}"
     @my_balance.to_s + Date.today.to_s
