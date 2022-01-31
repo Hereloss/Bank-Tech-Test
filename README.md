@@ -74,7 +74,11 @@ Make a deposit using the deposit command listed in the 'Commands' section below!
 To make a deposit: atm.deposit(500)  
 To make a withdrawal: atm.withdraw(500)  
 To see your current balance: atm.check_balance  
-To print your transaction history: atm.print_transaction_history
+To print your transaction history: atm.print_transaction_history  
+
+This program will accept money added in any integer form, or in the form "£500". It will not accept pence,  
+$,¢, € or any other currency type. I have also assumed any integer value entered will not have more than 2 decimal places (this would not break the program however )
+
 ### Feature Test
 Set up the application as stated above, and input the following into your terminal:
 
