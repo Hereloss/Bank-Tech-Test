@@ -1,4 +1,4 @@
-require './atm'
+require './lib/atm'
 
 describe Atm do
   

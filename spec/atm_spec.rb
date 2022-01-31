@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './atm'
+require './lib/atm'
 
 describe Atm do
   before (:each) do

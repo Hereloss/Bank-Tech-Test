@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './atm_bank'
+require './lib/atm_bank'
 
 describe Atm_Bank do
   it 'The bank can return the current balance' do

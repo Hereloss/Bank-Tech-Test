@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './atm_printer'
+require './lib/atm_printer'
 
 describe Atm_Printer do
   context 'Account history General' do
