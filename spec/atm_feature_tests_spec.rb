@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require './lib/atm'
 
 describe Atm do
-  
   it 'Feature test 1' do
     atm = Atm.new
     atm.deposit(1000)

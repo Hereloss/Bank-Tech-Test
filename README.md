@@ -57,6 +57,12 @@ So I don't deposit a wrong amount or nothing,
 I would like the deposit feature to only accept deposits in numbers or pounds
 
 ### Process
+My approach was relatively simple. Firstly, I worked through the user stories (adding puts statements to print to the console any required details for usage), and then extracted them into the following additional classes:
+
+ATMPrinter  
+Bank  
+
+While under other circumstances (such as with a much larger project), I would outline my potential classes beforehand and consider how they interact before writing tests, because this project is comparatively small and the methodology I used to split out the classes, I decided that taking a complete test-driven approach to its design would be the most beneficial. During this I also ensured all the tests were set up independently, using Doubles and Mocks in the atm_spec file for this purpose.
 
 ## How to use
 ### Set up
@@ -76,4 +82,4 @@ atm.deposit(1000)
 atm.withdraw(5)  
 atm.deposit(10)  
 atm.print_transaction_history  
-You will see a table similar to the one stated in the acceptance criteria.
+You will see a table similar to the one stated in the acceptance criteria. 
