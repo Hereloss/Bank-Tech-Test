@@ -24,6 +24,10 @@ describe Atm do
       subject.deposit(6)
       expect(subject.balance).to eq(11)
     end
+
+    it 'Each deposit has a timestamp on it stating the date it was made on' do
+      expect(subject.deposit(5)).to include(Date.today)
+    end
   end
 
   context 'Withdrawals' do
@@ -43,6 +47,10 @@ describe Atm do
     it 'A customer cannot withdraw more money than they have in their account' do
       subject.deposit(5)
       expect(subject.withdraw(10)).to eq 'Error - Not enough money!'
+    end
+
+    it 'Each withdrawal has a timestamp on it stating the date it was made on' do
+      expect(subject.withdrawal(5)).to include(Date.today)
     end
 
   end
