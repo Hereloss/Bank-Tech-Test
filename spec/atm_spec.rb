@@ -28,6 +28,13 @@ describe Atm do
     it 'Each deposit has a timestamp on it stating the date it was made on' do
       expect(subject.deposit(5)).to include(Date.today.to_s)
     end
+
+    it 'A deposit that is not a number or currency amount is not a valid input' do
+      expect(subject.deposit("£5")).not_to eq("Not a valid amount")
+      expect(subject.deposit("£5.00")).not_to eq("Not a valid amount")
+      expect(subject.deposit("Five")).to eq("Not a valid amount")
+      expect(subject.deposit("££5")).to eq("Not a valid amount")
+    end
   end
 
   context 'Withdrawals' do
@@ -52,6 +59,13 @@ describe Atm do
     it 'Each withdrawal has a timestamp on it stating the date it was made on' do
       subject.deposit(5)
       expect(subject.withdraw(5)).to include(Date.today.to_s)
+    end
+
+    it 'A withdrawal that is not a number or currency amount is not a valid input' do
+      expect(subject.deposit("£5")).not_to eq("Not a valid amount")
+      expect(subject.deposit("£5.00")).not_to eq("Not a valid amount")
+      expect(subject.deposit("Five")).to eq("Not a valid amount")
+      expect(subject.deposit("££5")).to eq("Not a valid amount")
     end
 
   end
