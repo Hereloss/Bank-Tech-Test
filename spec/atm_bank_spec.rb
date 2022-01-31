@@ -1,13 +1,13 @@
+# frozen_string_literal: true
+
 require './atm_bank'
 
 describe Atm_Bank do
-
   it 'The bank can return the current balance' do
     expect(subject.my_balance).to eq(0)
   end
 
   context 'Deposits' do
-
     it 'A customer can make a deposit to their account' do
       subject.make_deposit(5)
       expect(subject.my_balance).to eq(5)
@@ -18,7 +18,6 @@ describe Atm_Bank do
       subject.make_deposit(6)
       expect(subject.my_balance).to eq(11)
     end
-
   end
 
   context 'Withdrawals' do
@@ -38,7 +37,5 @@ describe Atm_Bank do
     it 'A customer cannot withdraw more money than they have in their account' do
       expect(subject.valid_withdrawal(10)).to eq false
     end
-
   end
- 
 end

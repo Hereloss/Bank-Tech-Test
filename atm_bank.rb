@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'date'
 
 class Atm_Bank
-
   attr_reader :my_balance
 
   def initialize
@@ -23,7 +24,6 @@ class Atm_Bank
       puts 'Error - Not enough money!'
       return false
     end
-    return true
+    true
   end
-
 end

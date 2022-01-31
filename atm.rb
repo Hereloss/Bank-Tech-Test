@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 require 'date'
-require_relative 'atm_printer.rb'
-require_relative 'atm_bank.rb'
+require_relative 'atm_printer'
+require_relative 'atm_bank'
 
 class Atm
-
-  def initialize(atm_bank = Atm_Bank.new,atm_printer = Atm_Printer.new)
+  def initialize(atm_bank = Atm_Bank.new, atm_printer = Atm_Printer.new)
     @bank = atm_bank
     @printer = atm_printer
   end
@@ -29,7 +30,7 @@ class Atm
         @bank.make_withdrawal(converting_from_string_to_amount(amount))
         @printer.update_account_history("#{Date.today.strftime('%d-%m-%Y')} || || #{converting_from_string_to_amount(amount)} || #{@bank.my_balance}")
       else
-        return "Error - Not enough money!"
+        'Error - Not enough money!'
       end
     else
       'Not a valid amount'

@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 require 'date'
 class Atm_Printer
-
   def initialize
     @account_history = ['date || credit || debit || balance']
   end
@@ -19,5 +20,4 @@ class Atm_Printer
   def update_account_history(transaction)
     @account_history << transaction
   end
-
 end
