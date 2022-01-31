@@ -1,4 +1,4 @@
-# Bank-Tech-Test
+# Bank
 
 ## Specification
 
@@ -15,9 +15,9 @@ And a withdrawal of 500 on 14-01-2023
 When she prints her bank statement
 Then she would see
 
-date || credit || debit || balance
-14/01/2023 || || 500.00 || 2500.00
-13/01/2023 || 2000.00 || || 3000.00
+date || credit || debit || balance  
+14/01/2023 || || 500.00 || 2500.00  
+13/01/2023 || 2000.00 || || 3000.00  
 10/01/2023 || 1000.00 || || 1000.00
 
 ## Planning
@@ -59,3 +59,21 @@ I would like the deposit feature to only accept deposits in numbers or pounds
 ### Process
 
 ## How to use
+### Set up
+Load up IRB or a REPL of your choice
+Require the ATM.rb file: If using PRY: load './lib/atm.rb' If using IRB: require './lib/atm.rb'  
+Instantiate a new ATM class in your REPL using the following line of code: atm = ATM.new  
+Make a deposit using the deposit command listed in the 'Commands' section below!
+### Commands
+To make a deposit: atm.deposit(500)  
+To make a withdrawal: atm.withdraw(500)  
+To see your current balance: atm.check_balance  
+To print your transaction history: atm.print_transaction_history
+### Feature Test
+Set up the application as stated above, and input the following into your terminal:
+
+atm.deposit(1000)  
+atm.withdraw(5)  
+atm.deposit(10)  
+atm.print_transaction_history  
+You will see a table similar to the one stated in the acceptance criteria.

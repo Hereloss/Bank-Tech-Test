@@ -1,7 +1,27 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/christhomas/tech_tests/bank/spec/atm_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/christhomas/tech_tests/bank/atm.rb": {
+        "lines": [
+          1,
+          null,
+          null
+        ]
+      }
     },
-    "timestamp": 1643639051
+    "timestamp": 1643639380
   }
 }
