@@ -17,7 +17,7 @@ class Atm
   def deposit(amount)
     if valid_amount(amount) == true
       @bank.make_deposit(converting_from_string_to_amount(amount))
-      @printer.update_account_history("#{Date.today.strftime('%d-%m-%Y')} || #{converting_from_string_to_amount(amount)} || || #{my_balance}")
+      @printer.update_account_history("#{Date.today.strftime('%d-%m-%Y')} || #{converting_from_string_to_amount(amount)} || || #{@bank.my_balance}")
     else
       'Not a valid amount'
     end
@@ -26,8 +26,8 @@ class Atm
   def withdraw(amount)
     if valid_amount(amount) == true
       if @bank.valid_withdrawal(converting_from_string_to_amount(amount))
-        @printer.update_account_history("#{Date.today.strftime('%d-%m-%Y')} || || #{converting_from_string_to_amount(amount)} || #{my_balance}")
         @bank.make_withdrawal(converting_from_string_to_amount(amount))
+        @printer.update_account_history("#{Date.today.strftime('%d-%m-%Y')} || || #{converting_from_string_to_amount(amount)} || #{@bank.my_balance}")
       else
         return "Error - Not enough money!"
       end

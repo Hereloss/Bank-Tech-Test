@@ -26,7 +26,7 @@ describe Atm do
     end
 
     it 'Each deposit has a timestamp on it stating the date it was made on' do
-      expect(subject.deposit(5)).to include(Date.today.strftime('%d-%m-%Y').to_s)
+      expect(subject.deposit(5)[1]).to include(Date.today.strftime('%d-%m-%Y').to_s)
     end
 
     it 'A deposit that is not a number or currency amount is not a valid input' do
@@ -58,7 +58,7 @@ describe Atm do
 
     it 'Each withdrawal has a timestamp on it stating the date it was made on' do
       subject.deposit(5)
-      expect(subject.withdraw(5)).to include(Date.today.strftime('%d-%m-%Y').to_s)
+      expect(subject.withdraw(5)[2]).to include(Date.today.strftime('%d-%m-%Y').to_s)
     end
 
     it 'A withdrawal that is not a number or currency amount is not a valid input' do

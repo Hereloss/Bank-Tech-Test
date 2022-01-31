@@ -16,7 +16,7 @@ class Atm_Printer
     string_account_history
   end
 
-  def update_account_history(transacion)
+  def update_account_history(transaction)
     @account_history << transaction
   end
 
