@@ -24,6 +24,13 @@ class Atm
     end
   end
 
+  def account_history
+    'date || credit || debit || balance'
+  end
+
+  private
+
+
   def valid_withdrawal(amount)
     if @my_balance - amount < 0
       puts "Error - Not enough money!"
