@@ -72,19 +72,18 @@ describe Atm do
 
   context 'Account history' do
     it 'A customer can ask for their account history' do
-      expect(subject.account_history).to eq('date || credit || debit || balance')
+      expect(subject.account_history).to eq("date || credit || debit || balance \n")
     end
 
     it 'After a deposit, it should show this in the account history in the correct format' do
       subject.deposit(5)
-      expect(subject.account_history).to eq('date || credit || debit || balance #{Date.now} || 5 || || 5')
+      expect(subject.account_history).to eq("date || credit || debit || balance \n#{Date.today} || 5 || || 5 \n")
     end
 
     it 'After a withdrawal, it should show this in the account history in the correct format' do
       subject.deposit(5)
       subject.withdraw(5)
-      expect(subject.account_history).to eq('date || credit || debit || balance 
-      #{Date.now} || || 5 || 5 #{Date.now} || 5 || || 5 ')
+      expect(subject.account_history).to eq("date || credit || debit || balance \n#{Date.today} || 5 || || 5 \n#{Date.today} || || 5 || 0 \n")
     end
   end
 
