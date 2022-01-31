@@ -21,4 +21,10 @@ describe Atm do
     expect(subject.balance).to eq(11)
   end
 
+  it 'A customer can make a withdrawal' do
+    subject.deposit(5)
+    subject.withdraw(5)
+    expect(subject.balance).to eq(0)
+  end
+
 end
