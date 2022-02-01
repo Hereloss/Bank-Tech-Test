@@ -19,9 +19,6 @@ class AtmBank
   end
 
   def valid_withdrawal(amount)
-    if (@my_balance - amount).negative?
-      raise 'Error - Not enough money!'
-    end
-    true
+    raise 'Error - Not enough money!' if (@my_balance - amount).negative?
   end
 end

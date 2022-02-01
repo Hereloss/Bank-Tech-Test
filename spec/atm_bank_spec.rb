@@ -35,7 +35,7 @@ describe AtmBank do
     end
 
     it 'A customer cannot withdraw more money than they have in their account' do
-      expect{subject.valid_withdrawal(10)}.to raise_error('Error - Not enough money!')
+      expect { subject.valid_withdrawal(10) }.to raise_error('Error - Not enough money!')
     end
   end
 end

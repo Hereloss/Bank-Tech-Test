@@ -9,6 +9,8 @@ describe Atm do
     @validity_double = double
     allow(@validity_double).to receive(:valid_amount).and_return(true)
     allow(@bank_double).to receive(:valid_withdrawal).and_return(true)
+    allow(@bank_double).to receive(:my_balance).and_return(5)
+    allow(@printer_double).to receive(:update_account_history).and_return('Updated')
     @atm = Atm.new(@bank_double, @printer_double, @validity_double)
   end
   context 'Balance' do
@@ -20,18 +22,14 @@ describe Atm do
 
   context 'Deposits' do
     it 'A customer can make a deposit to their account' do
-      allow(@bank_double).to receive(:my_balance).and_return(5)
       expect(@bank_double).to receive(:make_deposit).and_return('5, 31-01-2022')
-      expect(@printer_double).to receive(:update_account_history).and_return(['5, 31-01-2022'])
       expect(@validity_double).to receive(:converting_from_string_to_amount).and_return(5)
       @atm.deposit(5)
     end
 
     it 'A customer can make multiple deposits to their account' do
-      allow(@bank_double).to receive(:my_balance).and_return(5,11)
       expect(@bank_double).to receive(:make_deposit).and_return('5, 31-01-2022', '6, 31-01-2022')
-      expect(@printer_double).to receive(:update_account_history).and_return(['5, 31-01-2022'],['6, 31-01-2022'])
-      expect(@validity_double).to receive(:converting_from_string_to_amount).and_return(5,6)
+      expect(@validity_double).to receive(:converting_from_string_to_amount).and_return(5, 6)
       @atm.deposit(5)
       @atm.deposit(6)
     end
@@ -39,17 +37,13 @@ describe Atm do
 
   context 'Withdrawals' do
     it 'A customer can make a withdrawal' do
-      allow(@bank_double).to receive(:my_balance).and_return(0)
       expect(@bank_double).to receive(:make_withdrawal).and_return('5, 31-01-2022')
-      allow(@printer_double).to receive(:update_account_history).and_return('Updated')
       expect(@validity_double).to receive(:converting_from_string_to_amount).and_return(5)
       @atm.withdraw(5)
     end
 
     it 'A customer can make multiple withdrawals' do
-      allow(@bank_double).to receive(:my_balance).and_return(3)
       expect(@bank_double).to receive(:make_withdrawal).and_return('1, 31-01-2022').twice
-      allow(@printer_double).to receive(:update_account_history).and_return('Updated')
       expect(@validity_double).to receive(:converting_from_string_to_amount).and_return(5).twice
       @atm.withdraw(1)
       @atm.withdraw(1)
@@ -58,7 +52,7 @@ describe Atm do
 
   context 'Account history' do
     it 'A customer can ask for their account history' do
-      expect(@printer_double).to receive(:print_transaction_history).and_return("Updated!")
+      expect(@printer_double).to receive(:print_transaction_history).and_return('Updated!')
       @atm.print_transaction_history
     end
   end
