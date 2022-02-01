@@ -12,17 +12,14 @@ class AtmBank
 
   def make_withdrawal(amount)
     @my_balance -= amount
-    "#{@my_balance},#{Date.today.strftime('%d-%m-%Y')}"
   end
 
   def make_deposit(amount)
     @my_balance += amount
-    "#{@my_balance},#{Date.today.strftime('%d-%m-%Y')}"
   end
 
   def valid_withdrawal(amount)
     if (@my_balance - amount).negative?
-      puts 'Error - Not enough money!'
       raise 'Error - Not enough money!'
     end
     true

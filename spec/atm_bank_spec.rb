@@ -3,7 +3,7 @@
 require './lib/atm_bank'
 
 describe AtmBank do
-  it 'The bank can return the current balance' do
+  it 'The bank can return the current balance and it is a number' do
     expect(subject.my_balance).to eq(0)
   end
 
@@ -35,7 +35,7 @@ describe AtmBank do
     end
 
     it 'A customer cannot withdraw more money than they have in their account' do
-      expect(subject.valid_withdrawal(10)).to eq false
+      expect{subject.valid_withdrawal(10)}.to raise_error('Error - Not enough money!')
     end
   end
 end

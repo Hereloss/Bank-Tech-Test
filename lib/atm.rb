@@ -27,10 +27,12 @@ class Atm
   end
 
   def withdraw(amount)
-    if (@validity_checker.valid_amount(amount) && @bank.valid_withdrawal(amount))
+    if @validity_checker.valid_amount(amount)
       amount = @validity_checker.converting_from_string_to_amount(amount)
+      if @bank.valid_withdrawal(amount)
       @bank.make_withdrawal(amount)
       @printer.update_account_history("#{Date.today.strftime('%d-%m-%Y')} || || #{amount} || #{@bank.my_balance}")
+      end
     end
   end
 

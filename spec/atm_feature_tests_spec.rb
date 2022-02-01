@@ -27,10 +27,11 @@ describe Atm do
   it 'Feature test 3 with multiple invalid inputs' do
     atm = Atm.new
     atm.deposit(1000)
-    atm.deposit('1million')
+    expect{atm.deposit('1million')}.to raise_error('Not a valid amount')
     atm.withdraw('£5')
-    atm.withdraw('fiver')
+    expect{atm.withdraw('fiver')}.to raise_error('Not a valid amount')
     atm.deposit(10)
+    expect{atm.withdraw(2000)}.to raise_error('Error - Not enough money!')
     output = "date || credit || debit || balance \n#{Date.today.strftime('%d-%m-%Y')} || 10 || || 1005 \n#{Date.today.strftime('%d-%m-%Y')} || || 5 || 995 \n#{Date.today.strftime('%d-%m-%Y')} || 1000 || || 1000 \n"
     expect(atm.print_transaction_history).to eq(output)
   end

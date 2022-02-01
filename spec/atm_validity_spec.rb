@@ -9,6 +9,7 @@ describe AtmValidity do
 
   it 'Will raise an error if an input is invalid' do
     expect{subject.valid_amount("Fiver")}.to raise_error('Not a valid amount')
+    expect{subject.valid_amount('££5')}.to raise_error('Not a valid amount')
   end
 
   it "Will return the integer if given an integer value" do
