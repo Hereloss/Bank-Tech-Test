@@ -51,8 +51,7 @@ describe Atm do
     it 'A deposit that is not a number or currency amount is not a valid input' do
       allow(@bank_double).to receive(:my_balance).and_return(5)
       allow(@bank_double).to receive(:make_deposit).and_return('5, 31-01-2022')
-      allow(@printer_double).to receive(:update_account_history).and_return(['date || credit || debit || balance',
-                                                                             "#{Date.today.strftime('%d-%m-%Y')} || 5 || || 5]"])
+      allow(@printer_double).to receive(:update_account_history).and_return('Updated')
       expect(@atm.deposit('£5')).not_to eq('Not a valid amount')
       expect(@atm.deposit('£5.00')).not_to eq('Not a valid amount')
       expect(@atm.deposit('Five')).to eq('Not a valid amount')
@@ -66,8 +65,7 @@ describe Atm do
       expect(@bank_double).to receive(:make_deposit).and_return('5, 31-01-2022')
       expect(@bank_double).to receive(:make_withdrawal).and_return('5, 31-01-2022')
       expect(@bank_double).to receive(:valid_withdrawal).and_return(true)
-      allow(@printer_double).to receive(:update_account_history).and_return(['date || credit || debit || balance',
-                                                                             "#{Date.today.strftime('%d-%m-%Y')} || 5 || || 5]"])
+      allow(@printer_double).to receive(:update_account_history).and_return('Updated')
       @atm.deposit(5)
       @atm.withdraw(5)
       expect(@atm.check_balance).to eq(0)
@@ -78,8 +76,7 @@ describe Atm do
       expect(@bank_double).to receive(:make_deposit).and_return('5, 31-01-2022')
       expect(@bank_double).to receive(:make_withdrawal).and_return('1, 31-01-2022').twice
       expect(@bank_double).to receive(:valid_withdrawal).and_return(true).twice
-      allow(@printer_double).to receive(:update_account_history).and_return(['date || credit || debit || balance',
-                                                                             "#{Date.today.strftime('%d-%m-%Y')} || 5 || || 5]"])
+      allow(@printer_double).to receive(:update_account_history).and_return('Updated')
       @atm.deposit(5)
       @atm.withdraw(1)
       @atm.withdraw(1)
@@ -90,8 +87,7 @@ describe Atm do
       allow(@bank_double).to receive(:my_balance).and_return(5)
       expect(@bank_double).to receive(:make_deposit).and_return('5, 31-01-2022')
       expect(@bank_double).to receive(:valid_withdrawal).and_return(false)
-      allow(@printer_double).to receive(:update_account_history).and_return(['date || credit || debit || balance',
-                                                                             "#{Date.today.strftime('%d-%m-%Y')} || 5 || || 5]"])
+      allow(@printer_double).to receive(:update_account_history).and_return('Updated')
       @atm.deposit(5)
       expect(@atm.withdraw(10)).to eq 'Error - Not enough money!'
     end
@@ -111,8 +107,7 @@ describe Atm do
       allow(@bank_double).to receive(:my_balance).and_return(5)
       allow(@bank_double).to receive(:make_deposit).and_return('5, 31-01-2022')
       allow(@bank_double).to receive(:valid_withdrawal).and_return(false)
-      allow(@printer_double).to receive(:update_account_history).and_return(['date || credit || debit || balance',
-                                                                             "#{Date.today.strftime('%d-%m-%Y')} || 5 || || 5]"])
+      allow(@printer_double).to receive(:update_account_history).and_return('Updated')
       expect(@atm.withdraw('£5')).not_to eq('Not a valid amount')
       expect(@atm.withdraw('£5.00')).not_to eq('Not a valid amount')
       expect(@atm.withdraw('Five')).to eq('Not a valid amount')

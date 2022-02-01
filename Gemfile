@@ -8,3 +8,5 @@ gem 'rspec', '~> 3.10'
 
 gem 'simplecov', require: false, group: :test
 gem 'simplecov-console', '~> 0.9.1'
+
+gem 'rubocop', '~> 1.25'

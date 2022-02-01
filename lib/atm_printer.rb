@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 require 'date'
-class Atm_Printer
+
+# Stores and prints out the account history
+class AtmPrinter
   def initialize
     @account_history = ['date || credit || debit || balance']
   end

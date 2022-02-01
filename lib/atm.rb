@@ -4,8 +4,9 @@ require 'date'
 require_relative 'atm_printer'
 require_relative 'atm_bank'
 
+# This class is the one to interact with in the terminal and calls the others upon checking for valid input
 class Atm
-  def initialize(atm_bank = Atm_Bank.new, atm_printer = Atm_Printer.new)
+  def initialize(atm_bank = AtmBank.new, atm_printer = AtmPrinter.new)
     @bank = atm_bank
     @printer = atm_printer
   end

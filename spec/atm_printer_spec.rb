@@ -2,7 +2,7 @@
 
 require './lib/atm_printer'
 
-describe Atm_Printer do
+describe AtmPrinter do
   context 'Account history General' do
     it 'A customer can ask for their account history' do
       expect(subject.print_transaction_history).to eq("date || credit || debit || balance \n")

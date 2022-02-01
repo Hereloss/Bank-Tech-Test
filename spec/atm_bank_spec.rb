@@ -2,7 +2,7 @@
 
 require './lib/atm_bank'
 
-describe Atm_Bank do
+describe AtmBank do
   it 'The bank can return the current balance' do
     expect(subject.my_balance).to eq(0)
   end

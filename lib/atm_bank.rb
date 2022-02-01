@@ -2,7 +2,8 @@
 
 require 'date'
 
-class Atm_Bank
+# Processes withdrawals and deposits, and has details of the current account balance
+class AtmBank
   attr_reader :my_balance
 
   def initialize
