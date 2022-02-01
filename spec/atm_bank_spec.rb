@@ -3,8 +3,10 @@
 require './lib/atm_bank'
 
 describe AtmBank do
-  it 'The bank can return the current balance and it is a number' do
-    expect(subject.my_balance).to eq(0)
+  context 'Bank Balance' do
+    it 'The bank can return the current balance and it is a number' do
+      expect(subject.my_balance).to eq(0)
+    end
   end
 
   context 'Deposits' do
@@ -19,7 +21,9 @@ describe AtmBank do
       expect(subject.my_balance).to eq(11)
     end
   end
+end
 
+describe AtmBank do
   context 'Withdrawals' do
     it 'A customer can make a withdrawal' do
       subject.make_deposit(5)
