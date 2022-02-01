@@ -18,7 +18,13 @@ class AtmPrinter
     string_account_history
   end
 
-  def update_account_history(transaction)
+  def update_account_history(amount, balance, type)
+    date = Date.today.strftime('%d-%m-%Y')
+    transaction = if type == 'Withdrawal'
+                    "#{date} || || #{amount} || #{balance}"
+                  else
+                    "#{date} || #{amount} || || #{balance}"
+                  end
     @account_history << transaction
   end
 end
