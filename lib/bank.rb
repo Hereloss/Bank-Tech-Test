@@ -15,15 +15,14 @@ class Bank
   def deposit(amount)
     @validity_checker.valid_amount(amount)
     amount = @validity_checker.converting_from_string_to_amount(amount)
-    @my_balance += amount
+    process_deposit(amount)
     @printer.update_account_history(amount, @my_balance, 'Deposit')
   end
 
   def withdraw(amount)
     @validity_checker.valid_amount(amount)
     amount = @validity_checker.converting_from_string_to_amount(amount)
-    valid_withdrawal(amount)
-    @my_balance -= amount
+    process_withdrawal(amount)
     @printer.update_account_history(amount, @my_balance, 'Withdrawal')
   end
 
@@ -32,6 +31,15 @@ class Bank
   end
 
   private
+
+  def process_withdrawal(amount)
+    valid_withdrawal(amount)
+    @my_balance -= amount
+  end
+  
+  def process_deposit(amount)
+    @my_balance += amount
+  end
 
   def valid_withdrawal(amount)
     raise 'Error - Not enough money!' if (@my_balance - amount).negative?
