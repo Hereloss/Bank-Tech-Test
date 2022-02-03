@@ -17,6 +17,7 @@ class Atm
     amount = @validity_checker.converting_from_string_to_amount(amount)
     @my_balance += amount
     @printer.update_account_history(amount, @my_balance, 'Deposit')
+    @my_balance
   end
 
   def withdraw(amount)
@@ -25,6 +26,7 @@ class Atm
     valid_withdrawal(amount)
     @my_balance -= amount
     @printer.update_account_history(amount, @my_balance, 'Withdrawal')
+    @my_balance
   end
 
   def print_transaction_history
