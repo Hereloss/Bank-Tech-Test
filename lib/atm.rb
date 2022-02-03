@@ -2,38 +2,38 @@
 
 require 'date'
 require_relative 'atm_printer'
-require_relative 'atm_bank'
 require_relative 'atm_validity'
 
-# This class is the one to interact with in the terminal and calls the others upon checking for valid input
+# Processes withdrawals and deposits, and has details of the current account balance
 class Atm
-  def initialize(atm_bank = AtmBank.new, atm_printer = AtmPrinter.new, validity_checker = AtmValidity.new)
-    @bank = atm_bank
+  def initialize(atm_printer = AtmPrinter.new, validity_checker = AtmValidity.new)
+    @my_balance = 0
     @printer = atm_printer
     @validity_checker = validity_checker
-  end
-
-  def check_balance
-    puts "Your balance is: #{@bank.my_balance}"
-    @bank.my_balance
   end
 
   def deposit(amount)
     @validity_checker.valid_amount(amount)
     amount = @validity_checker.converting_from_string_to_amount(amount)
-    @bank.make_deposit(amount)
-    @printer.update_account_history(amount, @bank.my_balance, 'Deposit')
+    @my_balance += amount
+    @printer.update_account_history(amount, @my_balance, 'Deposit')
   end
 
   def withdraw(amount)
     @validity_checker.valid_amount(amount)
     amount = @validity_checker.converting_from_string_to_amount(amount)
-    @bank.valid_withdrawal(amount)
-    @bank.make_withdrawal(amount)
-    @printer.update_account_history(amount, @bank.my_balance, 'Withdrawal')
+    valid_withdrawal(amount)
+    @my_balance -= amount
+    @printer.update_account_history(amount, @my_balance, 'Withdrawal')
   end
 
   def print_transaction_history
     @printer.print_transaction_history
+  end
+
+  private
+
+  def valid_withdrawal(amount)
+    raise 'Error - Not enough money!' if (@my_balance - amount).negative?
   end
 end

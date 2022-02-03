@@ -64,6 +64,10 @@ Bank
 
 While under other circumstances (such as with a much larger project), I would outline my potential classes beforehand and consider how they interact before writing tests, because this project is comparatively small and the methodology I used to split out the classes, I decided that taking a complete test-driven approach to its design would be the most beneficial. During this I also ensured all the tests were set up independently, using Doubles and Mocks in the atm_spec file for this purpose.
 
+I then realised the ATM and bank classes were very similar, and had very similar functionality and so I combined these two classes, also removing the ability to see balance using a command as this is covered in the show account history command.
+
+I typically would not document easily readable classes/methods, however have done so in this case as Rubocop recommended to do so.
+
 ## How to use
 ### Set up
 Load up IRB or a REPL of your choice
@@ -73,7 +77,6 @@ Make a deposit using the deposit command listed in the 'Commands' section below!
 ### Commands
 To make a deposit: atm.deposit(500)  
 To make a withdrawal: atm.withdraw(500)  
-To see your current balance: atm.check_balance  
 To print your transaction history: atm.print_transaction_history  
 
 This program will accept money added in any integer form, or in the form "£500". It will not accept pence,  
