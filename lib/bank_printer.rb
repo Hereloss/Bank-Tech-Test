@@ -3,7 +3,7 @@
 require 'date'
 
 # Stores and prints out the account history
-class AtmPrinter
+class BankPrinter
   def initialize
     @account_history_header = 'date || credit || debit || balance'
     @account_history = []

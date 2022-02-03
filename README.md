@@ -59,25 +59,25 @@ I would like the deposit feature to only accept deposits in numbers or pounds
 ### Process
 My approach was relatively simple. Firstly, I worked through the user stories (adding puts statements to print to the console any required details for usage), and then extracted them into the following additional classes:
 
-ATMPrinter  
+bankPrinter  
 Bank  
 
-While under other circumstances (such as with a much larger project), I would outline my potential classes beforehand and consider how they interact before writing tests, because this project is comparatively small and the methodology I used to split out the classes, I decided that taking a complete test-driven approach to its design would be the most beneficial. During this I also ensured all the tests were set up independently, using Doubles and Mocks in the atm_spec file for this purpose.
+While under other circumstances (such as with a much larger project), I would outline my potential classes beforehand and consider how they interact before writing tests, because this project is comparatively small and the methodology I used to split out the classes, I decided that taking a complete test-driven approach to its design would be the most beneficial. During this I also ensured all the tests were set up independently, using Doubles and Mocks in the bank_spec file for this purpose.
 
-I then realised the ATM and bank classes were very similar, and had very similar functionality and so I combined these two classes, also removing the ability to see balance using a command as this is covered in the show account history command.
+I then realised the bank and bank classes were very similar, and had very similar functionality and so I combined these two classes, also removing the ability to see balance using a command as this is covered in the show account history command.
 
 I typically would not document easily readable classes/methods, however have done so in this case as Rubocop recommended to do so.
 
 ## How to use
 ### Set up
 Load up IRB or a REPL of your choice
-Require the ATM.rb file: If using PRY: load './lib/atm.rb' If using IRB: require './lib/atm.rb'  
-Instantiate a new ATM class in your REPL using the following line of code: atm = ATM.new  
+Require the bank.rb file: If using PRY: load './lib/bank.rb' If using IRB: require './lib/bank.rb'  
+Instantiate a new bank class in your REPL using the following line of code: bank = bank.new  
 Make a deposit using the deposit command listed in the 'Commands' section below!
 ### Commands
-To make a deposit: atm.deposit(500)  
-To make a withdrawal: atm.withdraw(500)  
-To print your transaction history: atm.print_transaction_history  
+To make a deposit: bank.deposit(500)  
+To make a withdrawal: bank.withdraw(500)  
+To print your transaction history: bank.print_transaction_history  
 
 This program will accept money added in any integer form, or in the form "£500". It will not accept pence,  
 $,¢, € or any other currency type. I have also assumed any integer value entered will not have more than 2 decimal places (this would not break the program however )
@@ -85,8 +85,8 @@ $,¢, € or any other currency type. I have also assumed any integer value ente
 ### Feature Test
 Set up the application as stated above, and input the following into your terminal:
 
-atm.deposit(1000)  
-atm.withdraw(5)  
-atm.deposit(10)  
-atm.print_transaction_history  
+bank.deposit(1000)  
+bank.withdraw(5)  
+bank.deposit(10)  
+bank.print_transaction_history  
 You will see a table similar to the one stated in the acceptance criteria. 

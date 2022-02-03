@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 require 'date'
-require_relative 'atm_printer'
-require_relative 'atm_validity'
+require_relative 'bank_printer'
+require_relative 'bank_validity'
 
 # Processes withdrawals and deposits, and has details of the current account balance
-class Atm
-  def initialize(atm_printer = AtmPrinter.new, validity_checker = AtmValidity.new)
+class Bank
+  def initialize(bank_printer = BankPrinter.new, validity_checker = BankValidity.new)
     @my_balance = 0
-    @printer = atm_printer
+    @printer = bank_printer
     @validity_checker = validity_checker
   end
 
@@ -17,7 +17,6 @@ class Atm
     amount = @validity_checker.converting_from_string_to_amount(amount)
     @my_balance += amount
     @printer.update_account_history(amount, @my_balance, 'Deposit')
-    @my_balance
   end
 
   def withdraw(amount)
@@ -26,7 +25,6 @@ class Atm
     valid_withdrawal(amount)
     @my_balance -= amount
     @printer.update_account_history(amount, @my_balance, 'Withdrawal')
-    @my_balance
   end
 
   def print_transaction_history

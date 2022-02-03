@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require './lib/atm_printer'
+require './lib/bank_printer'
 
-describe AtmPrinter do
+describe BankPrinter do
   before(:each) do
     allow(Date).to receive(:today).and_return Date.new(2023, 1, 31)
   end
@@ -28,7 +28,7 @@ describe AtmPrinter do
   end
 end
 
-describe AtmPrinter do
+describe BankPrinter do
   before(:each) do
     allow(Date).to receive(:today).and_return Date.new(2023, 1, 31)
   end

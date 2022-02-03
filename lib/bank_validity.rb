@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # This class just checks if an amount is valid and converts said amount to an integer value from a value like "£500"
-class AtmValidity
+class BankValidity
   def valid_amount(amount)
     raise 'Not a valid amount' unless (amount[0] == '£' && amount[1..-1].to_i != 0) || (amount.is_a? Integer)
   end

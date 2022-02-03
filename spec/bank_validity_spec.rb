@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require './lib/atm_validity'
+require './lib/bank_validity'
 
-describe AtmValidity do
+describe BankValidity do
   it 'Will return true if an input is valid' do
     expect { subject.valid_amount(500) }.not_to raise_error
     expect { subject.valid_amount('£500') }.not_to raise_error
